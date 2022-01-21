@@ -8,13 +8,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.text.StringBuilder
 
-class NoteBroadcastReceiver(val callback: (String)->Unit) : BroadcastReceiver() {
+class NoteBroadcastReceiver(val callback: (String) -> Unit) : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         callback(StringBuilder().apply {
             val sdf = SimpleDateFormat.getDateTimeInstance()
             val currentDate = sdf.format(Date())
-            append(intent?.getStringExtra(BROADCAST_MESSAGE).toString()+"\n")
+            append(intent?.getStringExtra(BROADCAST_MESSAGE).toString() + "\n")
             append(currentDate)
         }.toString())
     }
