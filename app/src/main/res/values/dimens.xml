@@ -4,4 +4,5 @@
     <dimen name="note_text">17sp</dimen>
     <dimen name="note_item_margin">8dp</dimen>
     <dimen name="note_item_height">60dp</dimen>
+    <dimen name="divider">1dp</dimen>
 </resources>

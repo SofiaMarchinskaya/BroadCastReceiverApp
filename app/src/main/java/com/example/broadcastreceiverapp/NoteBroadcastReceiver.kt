@@ -4,14 +4,18 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.text.StringBuilder
 
-class NoteBroadcastReceiver(private val callback: (String)->Unit) : BroadcastReceiver() {
+class NoteBroadcastReceiver(val callback: (String)->Unit) : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         callback(StringBuilder().apply {
-            append("Создана новая заметка! ")
-            append(intent?.getStringExtra(BROADCAST_MESSAGE).toString() + "\n")
+            val sdf = SimpleDateFormat.getDateTimeInstance()
+            val currentDate = sdf.format(Date())
+            append(intent?.getStringExtra(BROADCAST_MESSAGE).toString()+"\n")
+            append(currentDate)
         }.toString())
     }
 

@@ -8,7 +8,7 @@ import com.example.broadcastreceiverapp.databinding.NoteItemBinding
 
 class NotesAdapter(context: Context) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
-    private var list: List<Note> = ArrayList()
+    private var list: List<String> = ArrayList()
     private val inflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder =
@@ -22,12 +22,15 @@ class NotesAdapter(context: Context) : RecyclerView.Adapter<NotesAdapter.NoteVie
 
     override fun getItemCount(): Int = list.size
 
+    fun update(list: List<String>) {
+        this.list = list
+        notifyDataSetChanged()
+    }
 
     inner class NoteViewHolder(private val binding: NoteItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Note) {
-            binding.title.text = data.title
-            binding.text.text = data.body
+        fun bind(data: String) {
+            binding.title.text = data
         }
     }
 }
