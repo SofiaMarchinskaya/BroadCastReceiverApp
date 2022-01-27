@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.divider, null))
         registerReceiver(
             NoteBroadcastReceiver(viewModel::insertDataToList),
-            IntentFilter().apply { addAction("com.sofiamarchinskaya.hw1.NOTE_SENT") })
+            IntentFilter().apply { addAction(ACTION) })
         notesListAdapter =
             NotesAdapter(this)
         binding.notesList.adapter = notesListAdapter
@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.list.observe(this) {
             notesListAdapter.update(it)
         }
+    }
 
+    companion object {
+        private const val ACTION = "com.sofiamarchinskaya.hw1.NOTE_SENT"
     }
 }

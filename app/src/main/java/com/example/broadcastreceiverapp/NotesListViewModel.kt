@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 
 class NotesListViewModel : ViewModel() {
     val list = MutableLiveData<MutableList<String>>(mutableListOf())
-    private val new_list = mutableListOf<String>()
+    private val newList = mutableListOf<String>()
 
     fun insertDataToList(title: String) {
-        list.value = new_list.apply { add(title) }
+        list.value = newList.apply { add(title) }
     }
 }
