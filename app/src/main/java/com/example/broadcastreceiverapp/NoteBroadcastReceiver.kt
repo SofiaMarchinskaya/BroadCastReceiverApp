@@ -14,14 +14,15 @@ class NoteBroadcastReceiver(val callback: (String) -> Unit) : BroadcastReceiver(
         callback(StringBuilder().apply {
             val sdf = SimpleDateFormat.getDateTimeInstance()
             val currentDate = sdf.format(Date())
-            intent?.extras?.classLoader=Note::class.java.classLoader
-            val note:Note? = intent?.extras?.getParcelable(BROADCAST_MESSAGE)
-            append(note?.title + "\n" + note?.body)
+            val title = intent?.getStringExtra(TITLE)
+            val body = intent?.getStringExtra(TEXT)
+            append(title + "\n" + body)
             append(currentDate)
         }.toString())
     }
 
     companion object {
-        private const val BROADCAST_MESSAGE = "note"
+        private const val TITLE = "title"
+        private const val TEXT = "text"
     }
 }
