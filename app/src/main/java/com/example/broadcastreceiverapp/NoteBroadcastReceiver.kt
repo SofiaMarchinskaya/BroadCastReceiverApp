@@ -14,6 +14,7 @@ class NoteBroadcastReceiver(val callback: (String) -> Unit) : BroadcastReceiver(
         callback(StringBuilder().apply {
             val sdf = SimpleDateFormat.getDateTimeInstance()
             val currentDate = sdf.format(Date())
+            intent?.extras?.classLoader=Note::class.java.classLoader
             val note:Note? = intent?.extras?.getParcelable(BROADCAST_MESSAGE)
             append(note?.title + "\n" + note?.body)
             append(currentDate)

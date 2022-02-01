@@ -47,4 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
 }
